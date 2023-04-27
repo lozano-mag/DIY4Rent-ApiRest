@@ -61,5 +61,41 @@ class Diy4rentBackendApplicationTests {
         assertFalse(herramienta2.isPresent());
 		
 	}
+	
+	@Test
+	void testUsuario() {
+		
+	Usuario usuario = new Usuario();
+		
+	usuario.setId(6);
+	usuario.setFotoUser("https://doomwiki.org/w/images/8/88/HugoMartin.png");
+	usuario.setNombre("Francisco");
+	usuario.setCorreo("fran@gmail.com");
+	usuario.setTelefono(784);
+	usuario.setCorreoPaypal("fran@paypal.com");
+	usuario.setDireccion("C/ Doctor Ortega 2");
+	usuario.setLat(48.458715);
+	usuario.setLon(-1.128547);
+	usuario.setPassword("1234");
+		
+	usuarioRepository.save(usuario);
+		
+	Optional<Usuario> usuario2 = usuarioRepository.findById((long) 6);
+	assertEquals(usuario2.get().getNombre(), usuario.getNombre());
+	assertEquals(usuario2.get().getNombre(), "Francisco");
+	     
+	usuario.setTelefono(854);
+	usuarioRepository.save(usuario);
+	     
+	usuario2 = usuarioRepository.findById((long) 6);
+	assertNotEquals(usuario2.get().getTelefono(), 784);
+	assertEquals(usuario2.get().getTelefono(), 854);
+	     
+	usuarioRepository.delete(usuario);
+        usuario2 = usuarioRepository.findById((long) 6);
+	assertFalse(usuario2.isPresent());
+			
+		
+	}
 
 }
