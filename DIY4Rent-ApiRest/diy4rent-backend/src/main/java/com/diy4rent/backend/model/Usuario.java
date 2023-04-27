@@ -19,6 +19,8 @@ public class Usuario {
 	private int telefono;
 	private String correoPaypal;
 	private String direccion;
+	private double lat;
+	private double lon;
 	private String password;
 	
 	public Usuario(){
@@ -35,7 +37,7 @@ public class Usuario {
 		this.password = password;
 	}
 	
-	public Usuario(String fotoUser, String nombre, String correo, int telefono, String correoPaypal, String direccion, String password) {
+	public Usuario(String fotoUser, String nombre, String correo, int telefono, String correoPaypal, String direccion, String password, double lat, double lon) {
 		super();
 		this.fotoUser = fotoUser;
 		this.nombre = nombre;
@@ -44,6 +46,8 @@ public class Usuario {
 		this.correoPaypal = correoPaypal;
 		this.direccion = direccion;
 		this.password = password;
+		this.lat = lat;
+		this.lon = lon;
 	}
 	
 	public long getId() {
@@ -100,5 +104,20 @@ public class Usuario {
 		this.direccion = direccion;
 	}
 	
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLon() {
+		return lon;
+	}
+
+	public void setLon(double lon) {
+		this.lon = lon;
+	}
 
 }

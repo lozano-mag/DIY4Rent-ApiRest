@@ -49,6 +49,8 @@ public class UsuarioController {
 			usuario.setPassword(newUsuario.getPassword());
 			usuario.setTelefono(newUsuario.getTelefono());
 			usuario.setFotoUser(newUsuario.getFotoUser());
+			usuario.setLat(newUsuario.getLat());
+			usuario.setLon(newUsuario.getLon());
 			usuarioRepository.save(usuario);
 			return ResponseEntity.ok().body(usuario);
 		}).orElse(new ResponseEntity<Usuario>(HttpStatus.NOT_FOUND));
