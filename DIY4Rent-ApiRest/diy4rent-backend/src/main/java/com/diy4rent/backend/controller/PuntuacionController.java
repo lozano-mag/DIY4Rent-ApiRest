@@ -1,5 +1,6 @@
 package com.diy4rent.backend.controller;
 
+import java.net.URISyntaxException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,14 +32,10 @@ public class PuntuacionController {
 		return this.puntuacionRepository.findAll();
 	}
 	
-	@PutMapping("puntuaciones/{id}")
-	public ResponseEntity<Puntuacion> update(@RequestBody Puntuacion newPuntuacion, @PathVariable long id){
-		return puntuacionRepository.findById(id).map(puntuacion -> {
-			puntuacion.setUserId(newPuntuacion.getUserId());
-            puntuacion.setPuntuacion(newPuntuacion.getPuntuacion());
-			puntuacionRepository.save(puntuacion);
-			return ResponseEntity.ok().body(puntuacion);
-		}).orElse(new ResponseEntity<Puntuacion>(HttpStatus.NOT_FOUND));
-	}
+	@PostMapping("puntuaciones")
+    public ResponseEntity<Puntuacion> create(@RequestBody Puntuacion newPuntuacion) throws URISyntaxException{
+        Puntuacion result = puntuacionRepository.save(newPuntuacion);
+        return ResponseEntity.ok(result);
+    }	
 	
 }
