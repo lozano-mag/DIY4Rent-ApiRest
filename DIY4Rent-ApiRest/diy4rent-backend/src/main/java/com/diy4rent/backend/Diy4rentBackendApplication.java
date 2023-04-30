@@ -7,8 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.diy4rent.backend.model.Herramienta;
 import com.diy4rent.backend.model.Usuario;
+import com.diy4rent.backend.model.Puntuacion;
+import com.diy4rent.backend.model.Reserva;
 import com.diy4rent.backend.repository.HerramientaRepository;
 import com.diy4rent.backend.repository.UsuarioRepository;
+import com.diy4rent.backend.repository.PuntuacionRepository;
+import com.diy4rent.backend.repository.ReservaRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +31,12 @@ public class Diy4rentBackendApplication implements CommandLineRunner{
 	
 	@Autowired
 	private UsuarioRepository  usuarioRepository;
+	
+	@Autowired
+	private ReservaRepository reservaRepository;
+	
+	@Autowired 
+	PuntuacionRepository puntuacionRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -45,6 +55,17 @@ public class Diy4rentBackendApplication implements CommandLineRunner{
 		this.usuarioRepository.save(new Usuario("https://s.hs-data.com/bilder/spieler/gross/242894.jpg","Josema", "aymane4@gmail.com", 23564, "@paypal.com", "c/de Jaén, Barcelona", passwordEncoder().encode("1234"), 41.40324887752156, 2.155357139397873));
 		this.usuarioRepository.save(new Usuario("https://upload.wikimedia.org/wikipedia/commons/2/2b/Alonso_2016.jpg","Fernando", "aymane5@gmail.com", 23564, "@paypal.com", "Av Reina Victoria 41, Madrid", passwordEncoder().encode("1234"), 40.44656767824949, -3.7110273029662806));
 		
+		this.reservaRepository.save(new Reserva(3, 1, 30, 4, 2023, 20, 5, 2023));
+		this.reservaRepository.save(new Reserva(6, 3, 27, 4, 2023, 29, 4, 2023));
+		this.reservaRepository.save(new Reserva(5, 1, 24, 4, 2023, 15, 5, 2023));
+		this.reservaRepository.save(new Reserva(1, 1, 4, 4, 2023, 20, 2, 2023));
+		this.reservaRepository.save(new Reserva(7, 1, 4, 4, 2023, 20, 2, 2023));
+		
+		this.puntuacionRepository.save(new Puntuacion(0,4));
+		this.puntuacionRepository.save(new Puntuacion(1,2));
+		this.puntuacionRepository.save(new Puntuacion(2,0));
+		this.puntuacionRepository.save(new Puntuacion(3,5));
+		this.puntuacionRepository.save(new Puntuacion(4,3));
 	}
 
 
