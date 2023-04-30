@@ -36,7 +36,7 @@ public class Diy4rentBackendApplication implements CommandLineRunner{
 	private ReservaRepository reservaRepository;
 	
 	@Autowired 
-	PuntuacionRepository puntuacionRepository;
+	private PuntuacionRepository puntuacionRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
