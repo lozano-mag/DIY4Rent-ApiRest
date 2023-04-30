@@ -9,6 +9,11 @@ import com.diy4rent.backend.model.Herramienta;
 import com.diy4rent.backend.model.Usuario;
 import com.diy4rent.backend.repository.HerramientaRepository;
 import com.diy4rent.backend.repository.UsuarioRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.security.SecureRandom;
 
 @SpringBootApplication
 public class Diy4rentBackendApplication implements CommandLineRunner{
@@ -34,12 +39,21 @@ public class Diy4rentBackendApplication implements CommandLineRunner{
 		this.herramientaRepository.save(new Herramienta("Engalletadora makita pj7000 701w", "Engalletadora", 1, 2, 5.70, "La engalletadora PJ7000 es una herramienta eléctrica diseñada exclusivamente para realizar un ensamblaje con galleta, un método moderno para ensamblar piezas de madera. Ajustes de precisión muy sencillos y rápidos.", "https://www.modregohogar.com/293087-thickbox_default/engalletadora-makita-pj7000-701w.jpg"));
 		
 		
-		this.usuarioRepository.save(new Usuario("https://doomwiki.org/w/images/8/88/HugoMartin.png","Hugo", "@gmail.com", 23564, "@paypal.com", "c/Prado 27, Polan", "1234", 39.785912, -4.166071));
-		this.usuarioRepository.save(new Usuario("https://sr.uab.cat/wp-content/uploads/2021/04/vega-maria-jose.jpg","Marisol", "@gmail.com", 23564, "@paypal.com", "c/de Nápoles 8, Toledo", "1234", 39.882710898866904, -4.034939774151197));
-		this.usuarioRepository.save(new Usuario("https://thumbs.dreamstime.com/z/icono-del-usuario-avatar-young-lady-stock-%C3%ADcono-de-como-archivo-eps-233299415.jpg","María", "@gmail.com", 23564, "@paypal.com", "Av. Complutense, 30, 28040 Madrid", "1234", 40.453186858919715, -3.7261145318013753));
-		this.usuarioRepository.save(new Usuario("https://s.hs-data.com/bilder/spieler/gross/242894.jpg","Josema", "@gmail.com", 23564, "@paypal.com", "c/de Jaén, Barcelona", "1234", 41.40324887752156, 2.155357139397873));
-		this.usuarioRepository.save(new Usuario("https://upload.wikimedia.org/wikipedia/commons/2/2b/Alonso_2016.jpg","Fernando", "@gmail.com", 23564, "@paypal.com", "Av Reina Victoria 41, Madrid", "1234", 40.44656767824949, -3.7110273029662806));
+		this.usuarioRepository.save(new Usuario("https://doomwiki.org/w/images/8/88/HugoMartin.png","Hugo", "aymane1@gmail.com", 23564, "@paypal.com", "c/Prado 27, Polan", passwordEncoder().encode("1234"), 39.785912, -4.166071));
+		this.usuarioRepository.save(new Usuario("https://sr.uab.cat/wp-content/uploads/2021/04/vega-maria-jose.jpg","Marisol", "aymane2@gmail.com", 23564, "@paypal.com", "c/de Nápoles 8, Toledo", passwordEncoder().encode("1234"), 39.882710898866904, -4.034939774151197));
+		this.usuarioRepository.save(new Usuario("https://thumbs.dreamstime.com/z/icono-del-usuario-avatar-young-lady-stock-%C3%ADcono-de-como-archivo-eps-233299415.jpg","María", "aymane3@gmail.com", 23564, "@paypal.com", "Av. Complutense, 30, 28040 Madrid", passwordEncoder().encode("1234"), 40.453186858919715, -3.7261145318013753));
+		this.usuarioRepository.save(new Usuario("https://s.hs-data.com/bilder/spieler/gross/242894.jpg","Josema", "aymane4@gmail.com", 23564, "@paypal.com", "c/de Jaén, Barcelona", passwordEncoder().encode("1234"), 41.40324887752156, 2.155357139397873));
+		this.usuarioRepository.save(new Usuario("https://upload.wikimedia.org/wikipedia/commons/2/2b/Alonso_2016.jpg","Fernando", "aymane5@gmail.com", 23564, "@paypal.com", "Av Reina Victoria 41, Madrid", passwordEncoder().encode("1234"), 40.44656767824949, -3.7110273029662806));
 		
 	}
 
+
+	@Bean
+	public SpringApplicationContext springApplicationContext() {
+		return new SpringApplicationContext();
+	}
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		return new BCryptPasswordEncoder(10,new SecureRandom());
+	}
 }
