@@ -22,13 +22,13 @@ import org.openqa.selenium.Keys;
 import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-public class tests {
+public class testRegistroUsuarios {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
   @Before
   public void setUp() {
-	System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
