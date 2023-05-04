@@ -1,14 +1,20 @@
 package com.diy4rent.backend;
 
 import org.junit.jupiter.api.Test;
+
 import org.springframework.boot.test.context.SpringBootTest;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 import java.util.Optional;
+import java.util.List;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -17,6 +23,7 @@ import com.diy4rent.backend.repository.HerramientaRepository;
 
 import com.diy4rent.backend.model.Usuario;
 import com.diy4rent.backend.repository.UsuarioRepository;
+
 
 @SpringBootTest
 class Diy4rentBackendApplicationTests {
@@ -30,8 +37,8 @@ class Diy4rentBackendApplicationTests {
 	@Test
 	void testHerramienta() {
 		
-	Herramienta herramienta = new Herramienta();
-	herramienta.setId(1);
+		Herramienta herramienta = new Herramienta();
+		herramienta.setId(1);
         herramienta.setNombre("Pelacables con ajuste automático Weidmüller");
         herramienta.setCategoria("Pelacables");
         herramienta.setEstadoDesgaste(2);
@@ -65,36 +72,38 @@ class Diy4rentBackendApplicationTests {
 	@Test
 	void testUsuario() {
 		
-	Usuario usuario = new Usuario();
+		Usuario usuario = new Usuario();
 		
-	usuario.setId(6);
-	usuario.setFotoUser("https://doomwiki.org/w/images/8/88/HugoMartin.png");
-	usuario.setNombre("Francisco");
-	usuario.setCorreo("fran@gmail.com");
-	usuario.setTelefono(784);
-	usuario.setCorreoPaypal("fran@paypal.com");
-	usuario.setDireccion("C/ Doctor Ortega 2");
-	usuario.setLat(48.458715);
-	usuario.setLon(-1.128547);
-	usuario.setPassword("1234");
+		usuario.setId(6);
+		usuario.setFotoUser("https://doomwiki.org/w/images/8/88/HugoMartin.png");
+		usuario.setNombre("Francisco");
+		usuario.setCorreo("fran@gmail.com");
+		usuario.setTelefono(784);
+		usuario.setCorreoPaypal("fran@paypal.com");
+		usuario.setDireccion("C/ Doctor Ortega 2");
+		usuario.setLat(48.458715);
+		usuario.setLon(-1.128547);
+		usuario.setPassword("1234");
 		
-	usuarioRepository.save(usuario);
+		usuarioRepository.save(usuario);
 		
-	Optional<Usuario> usuario2 = usuarioRepository.findById((long) 6);
-	assertEquals(usuario2.get().getNombre(), usuario.getNombre());
-	assertEquals(usuario2.get().getNombre(), "Francisco");
+		 Optional<Usuario> usuario2 = usuarioRepository.findById((long) 6);
+	     assertEquals(usuario2.get().getNombre(), usuario.getNombre());
+	     assertEquals(usuario2.get().getNombre(), "Francisco");
 	     
-	usuario.setTelefono(854);
-	usuarioRepository.save(usuario);
+	     usuario.setTelefono(854);
+	     usuarioRepository.save(usuario);
 	     
-	usuario2 = usuarioRepository.findById((long) 6);
-	assertNotEquals(usuario2.get().getTelefono(), 784);
-	assertEquals(usuario2.get().getTelefono(), 854);
+	     usuario2 = usuarioRepository.findById((long) 6);
+	     assertNotEquals(usuario2.get().getTelefono(), 784);
+	     assertEquals(usuario2.get().getTelefono(), 854);
 	     
-	usuarioRepository.delete(usuario);
-        usuario2 = usuarioRepository.findById((long) 6);
-	assertFalse(usuario2.isPresent());
+	     usuarioRepository.delete(usuario);
+	     usuario2 = usuarioRepository.findById((long) 6);
+	     assertFalse(usuario2.isPresent());
 			
+	     
+	
 		
 	}
 
