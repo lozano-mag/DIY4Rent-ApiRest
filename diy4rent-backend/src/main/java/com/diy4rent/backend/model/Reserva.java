@@ -22,6 +22,7 @@ public class Reserva {
 	private int mesFin;
 	private int anoFin;
 	private boolean isValorado;
+	private boolean isPagado;
 	
 	public Reserva() {
 		super();
@@ -44,6 +45,7 @@ public class Reserva {
 		this.mesFin = mesFin;
 		this.anoFin = anoFin;
 		this.isValorado = false;
+		this.isPagado = false;
 	}
 
 	public long getId() {
@@ -123,7 +125,13 @@ public class Reserva {
 	public void setIsValorado(boolean isValorado) {
 		this.isValorado = isValorado;
 	}
-	
-	
+
+	public boolean getIsPagado() {
+		return isPagado;
+	}
+
+	public void setIsPagado(boolean isPagado) {
+		this.isPagado = isPagado;
+	}
 	
 }

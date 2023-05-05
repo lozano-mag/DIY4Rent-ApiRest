@@ -44,10 +44,19 @@ public class ReservaController {
 		return ResponseEntity.ok().body(null);
 	}
 	
-	@PutMapping("reservas/{id}")
-	public ResponseEntity<Reserva> update(@RequestBody Reserva newReserva, @PathVariable long id){
+	@PutMapping("valorarreservas/{id}")
+	public ResponseEntity<Reserva> setValorado(@RequestBody Reserva newReserva, @PathVariable long id){
 		return reservaRepository.findById(id).map(reserva -> {
 			reserva.setIsValorado(newReserva.getIsValorado());
+			reservaRepository.save(reserva);
+			return ResponseEntity.ok().body(reserva);
+		}).orElse(new ResponseEntity<Reserva>(HttpStatus.NOT_FOUND));
+	}
+	
+	@PutMapping("pagarreservas/{id}")
+	public ResponseEntity<Reserva> setPagado(@RequestBody Reserva newReserva, @PathVariable long id){
+		return reservaRepository.findById(id).map(reserva -> {
+			reserva.setIsPagado(newReserva.getIsPagado());
 			reservaRepository.save(reserva);
 			return ResponseEntity.ok().body(reserva);
 		}).orElse(new ResponseEntity<Reserva>(HttpStatus.NOT_FOUND));
