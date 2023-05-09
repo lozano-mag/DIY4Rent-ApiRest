@@ -52,12 +52,13 @@ public class Diy4rentBackendApplication implements CommandLineRunner{
 		this.usuarioRepository.save(new Usuario("https://sr.uab.cat/wp-content/uploads/2021/04/vega-maria-jose.jpg","Marisol", "marisol@gmail.com", 23564, "@paypal.com", "c/de Nápoles 8, Toledo", passwordEncoder().encode("1234"), 39.882710898866904, -4.034939774151197));
 		this.usuarioRepository.save(new Usuario("https://thumbs.dreamstime.com/z/icono-del-usuario-avatar-young-lady-stock-%C3%ADcono-de-como-archivo-eps-233299415.jpg","María", "aymane3@gmail.com", 23564, "@paypal.com", "Av. Complutense, 30, 28040 Madrid", passwordEncoder().encode("1234"), 40.453186858919715, -3.7261145318013753));
 		this.usuarioRepository.save(new Usuario("https://s.hs-data.com/bilder/spieler/gross/242894.jpg","Josema", "aymane4@gmail.com", 23564, "@paypal.com", "c/de Jaén, Barcelona", passwordEncoder().encode("1234"), 41.40324887752156, 2.155357139397873));
-		this.usuarioRepository.save(new Usuario("https://upload.wikimedia.org/wikipedia/commons/2/2b/Alonso_2016.jpg","Fernando", "aymane5@gmail.com", 23564, "@paypal.com", "Av Reina Victoria 41, Madrid", passwordEncoder().encode("1234"), 40.44656767824949, -3.7110273029662806));
+		this.usuarioRepository.save(new Usuario("https://upload.wikimedia.org/wikipedia/commons/2/2b/Alonso_2016.jpg","Fernando", "fernando@gmail.com", 23564, "@paypal.com", "Av Reina Victoria 41, Madrid", passwordEncoder().encode("1234"), 40.44656767824949, -3.7110273029662806));
 		
-		this.reservaRepository.save(new Reserva(3, 1, 30, 4, 2023, 20, 5, 2023));
-		this.reservaRepository.save(new Reserva(6, 3, 27, 4, 2023, 29, 4, 2023));
-		this.reservaRepository.save(new Reserva(5, 1, 24, 4, 2023, 15, 5, 2023));
-		this.reservaRepository.save(new Reserva(7, 1, 4, 4, 2023, 20, 2, 2023));
+		this.reservaRepository.save(new Reserva(3, 1, 30, 4, 2023, 20, 5, 2023, true));
+		this.reservaRepository.save(new Reserva(6, 3, 27, 4, 2023, 29, 4, 2023, true));
+		this.reservaRepository.save(new Reserva(5, 1, 24, 4, 2023, 15, 5, 2023, false));
+		this.reservaRepository.save(new Reserva(7, 1, 5, 4, 2023, 20, 4, 2023, true));
+		this.reservaRepository.save(new Reserva(7, 1, 5, 6, 2023, 20, 6, 2023, true));
 		
 		this.puntuacionRepository.save(new Puntuacion(0,4));
 		this.puntuacionRepository.save(new Puntuacion(1,2));

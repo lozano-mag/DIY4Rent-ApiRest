@@ -47,6 +47,21 @@ public class Reserva {
 		this.isValorado = false;
 		this.isPagado = false;
 	}
+	
+	public Reserva(long herramientaId, long usuarioReservado, int diaIni, int mesIni, int anoIni, int diaFin,
+			int mesFin, int anoFin, boolean isPagado) {
+		super();
+		this.herramientaId = herramientaId;
+		this.usuarioReservado = usuarioReservado;
+		this.diaIni = diaIni;
+		this.mesIni = mesIni;
+		this.anoIni = anoIni;
+		this.diaFin = diaFin;
+		this.mesFin = mesFin;
+		this.anoFin = anoFin;
+		this.isValorado = false;
+		this.isPagado = isPagado;
+	}
 
 	public long getId() {
 		return id;
