@@ -49,6 +49,7 @@ public class TestAlquiladoDevolución {
     // 3 | click | css=.inputsforms |  | 
     driver.findElement(By.cssSelector(".inputsforms")).click();
     // 4 | click | css=input:nth-child(1) |  | 
+    // Iniciamos sesión con un usuario ya registrado en la base de datos
     driver.findElement(By.cssSelector("input:nth-child(1)")).click();
     // 5 | type | css=input:nth-child(1) | federicoperez@gmail.com | 
     driver.findElement(By.cssSelector("input:nth-child(1)")).sendKeys("federicoperez@gmail.com");
@@ -78,6 +79,8 @@ public class TestAlquiladoDevolución {
       Actions builder = new Actions(driver);
       builder.doubleClick(element).perform();
     }
+	  
+    //Añadimos los campos del alquiler de la herramienta
     // 15 | type | css=input | paula1@gmail.com | 
     driver.findElement(By.cssSelector("input")).sendKeys("paula1@gmail.com");
     // 16 | click | css=select:nth-child(6) |  | 
@@ -124,4 +127,5 @@ public class TestAlquiladoDevolución {
     // 29 | click | css=button:nth-child(5) |  | 
     driver.findElement(By.cssSelector("button:nth-child(5)")).click();
   }
+	//Se ha podido alquilar la herramienta de manera correcta y posteriormente marcarla como devuelta
 }
