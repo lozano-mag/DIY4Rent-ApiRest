@@ -77,6 +77,7 @@ public class TestInicioSesion {
     }
     // 12 | click | css=input:nth-child(1) |  | 
     driver.findElement(By.cssSelector("input:nth-child(1)")).click();
+    //Introducimos los datos del nuevo usuario
     // 13 | type | css=input:nth-child(1) | paula | 
     driver.findElement(By.cssSelector("input:nth-child(1)")).sendKeys("paula");
     // 14 | click | css=input:nth-child(1) |  | 
@@ -128,6 +129,7 @@ public class TestInicioSesion {
     // 31 | click | css=.registerSignIn |  | 
     driver.findElement(By.cssSelector(".registerSignIn")).click();
     // 32 | click | css=input:nth-child(1) |  | 
+    //Ahora iniciamos sesión con el usuario que hemos creado
     driver.findElement(By.cssSelector("input:nth-child(1)")).click();
     // 33 | type | css=input:nth-child(1) | paula1@gmail.com | 
     driver.findElement(By.cssSelector("input:nth-child(1)")).sendKeys("paula1@gmail.com");
@@ -138,6 +140,9 @@ public class TestInicioSesion {
     // 36 | click | css=.loginEnter |  | 
     driver.findElement(By.cssSelector(".loginEnter")).click();
     // 37 | click | css=.loginSubirDashboard |  | 
+    
+    //Hemos iniciado sesión sin ningún fallo
+    
     driver.findElement(By.cssSelector(".loginSubirDashboard")).click();
     // 38 | click | css=.inputsforms |  | 
     driver.findElement(By.cssSelector(".inputsforms")).click();
@@ -146,6 +151,7 @@ public class TestInicioSesion {
     // 40 | click | css=input:nth-child(1) |  | 
     driver.findElement(By.cssSelector("input:nth-child(1)")).click();
     // 41 | click | css=input:nth-child(1) |  | 
+    //Creamos una nueva herramienta rellenando los campos
     driver.findElement(By.cssSelector("input:nth-child(1)")).click();
     // 42 | type | css=input:nth-child(1) | Herramienta de crimpado | 
     driver.findElement(By.cssSelector("input:nth-child(1)")).sendKeys("Herramienta de crimpado");
@@ -193,4 +199,6 @@ public class TestInicioSesion {
     // 60 | click | css=.loginEnter |  | 
     driver.findElement(By.cssSelector(".loginEnter")).click();
   }
+  
+  //Hemos podido registrar al nuevo usuario, iniciar sesión con su cuenta y ese usuario ha podido subir una nueva herramienta a la plataforma
 }
