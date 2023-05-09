@@ -57,6 +57,8 @@ public class TestFiltrados {
     // 7 | click | id=logotipo |  | 
     driver.findElement(By.id("logotipo")).click();
     // 8 | click | id=filtroPrecio |  | 
+	  
+    //Primero filtramos por precio, en este caso hemos probado con un precio máximo de 3€ al día
     driver.findElement(By.id("filtroPrecio")).click();
     // 9 | type | id=filtroPrecio | 3 | 
     driver.findElement(By.id("filtroPrecio")).sendKeys("3");
@@ -67,6 +69,10 @@ public class TestFiltrados {
     // 12 | runScript | window.scrollTo(0,1541.5999755859375) |  | 
     js.executeScript("window.scrollTo(0,1541.5999755859375)");
     // 13 | click | id=logotipo |  | 
+	  
+    //Podemos ver que las únicas herramientas que aparecen son de precio 3€ o menor
+	  
+    //Ahora vamos a filtrar por categoría. Seleccionamos la categoría Silicona
     driver.findElement(By.id("logotipo")).click();
     // 14 | click | id=selectorCategorias |  | 
     driver.findElement(By.id("selectorCategorias")).click();
@@ -75,9 +81,14 @@ public class TestFiltrados {
       WebElement dropdown = driver.findElement(By.id("selectorCategorias"));
       dropdown.findElement(By.xpath("//option[. = 'Silicona']")).click();
     }
+	  
+    //Podemos observar que solo aparecen Siliconas
+	  
     // 16 | click | css=.tarjeta img |  | 
     driver.findElement(By.cssSelector(".tarjeta img")).click();
     // 17 | click | id=logotipo |  | 
+	  
+    //Ahora vamos a filtrar por nombre. Introducimos Sierra
     driver.findElement(By.id("logotipo")).click();
     // 18 | click | id=filtroNombre |  | 
     driver.findElement(By.id("filtroNombre")).click();
@@ -103,6 +114,8 @@ public class TestFiltrados {
       Actions builder = new Actions(driver);
       builder.doubleClick(element).perform();
     }
+    
+    //Ahora vamos a probar con Destornillador estrella y observamos que efectivamente únicamente aparece una herramienta, un destornillador estrella
     // 26 | click | id=filtroNombre |  | 
     driver.findElement(By.id("filtroNombre")).click();
     // 27 | type | id=filtroNombre | Destornillador estrella | 
@@ -136,4 +149,5 @@ public class TestFiltrados {
     // 37 | click | id=filtroNombre |  | 
     driver.findElement(By.id("filtroNombre")).click();
   }
+   //Todos los filtros han funcionado según lo esperado
 }
